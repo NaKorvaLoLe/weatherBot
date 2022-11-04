@@ -2,14 +2,14 @@ import telebot
 from pyowm import OWM
 from pyowm.utils.config import get_default_config
 import random
-
+import settings
 
 config_dict = get_default_config()
 config_dict['language'] = 'ru'
 
-owm = OWM('0a1b297cb8d5f90aa973b5d885953d9a', config_dict)
+owm = OWM(settings.API_KEY_WEATHER, config_dict)
 mgr = owm.weather_manager()
-bot = telebot.TeleBot("5529827963:AAH6sCRgKYKuh437wN1_EHLbIiWOe4q8lqU", parse_mode=None)
+bot = telebot.TeleBot(settings.API_KEY_BOT, parse_mode=None)
 
 
 @bot.message_handler(commands=['start'])
